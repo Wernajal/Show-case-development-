@@ -70,3 +70,9 @@ footer {
 .social-links a:hover {
   color: #25D366; /* WhatsApp green */
 }
+.profile-img{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  object-fit:cover;
+}
