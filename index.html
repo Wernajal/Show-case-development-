@@ -13,79 +13,72 @@
 
 <body>
 
-    <!-- Profile Section -->
-    <div class="profile-container">
-        <img src="profile/image.jpg" alt="My Photo" class="profile-img">
-        <h2>Bravim Wanjala</h2>
-        <p>Welcome to my portfolio!</p>
-    </div>
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <img src="profile.jpg" alt="My Photo" class="profile-img">
 
-    <!-- Header -->
-    <header>
         <h1>Hi, I'm Bravin Mulati</h1>
         <p>Web Developer & Digital Creator</p>
+
+        <div class="socials">
+            <a href="https://wa.me/254790367352" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/Braavos12.3" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about">
+    <!-- ABOUT -->
+    <section class="section">
         <h2>About Me</h2>
-        <p>I am a passionate web developer creating modern and responsive websites. I love coding and building digital platforms.</p>
+        <p>
+            I am a passionate web developer building modern, responsive websites and digital solutions.
+            I enjoy coding and turning ideas into real projects.
+        </p>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
+    <!-- PROJECTS -->
+    <section class="section">
         <h2>My Projects</h2>
-        <ul>
-            <li><a href="#">Portfolio Website</a></li>
-            <li><a href="#">Blog Platform</a></li>
-            <li><a href="#">E-commerce Demo</a></li>
-        </ul>
+
+        <div class="projects">
+            <div class="card">Portfolio Website</div>
+            <div class="card">Blog Platform</div>
+            <div class="card">E-commerce Demo</div>
+        </div>
     </section>
 
-    <!-- Contact Section (FULL STACK READY) -->
-    <section id="contact">
+    <!-- CONTACT -->
+    <section class="section">
         <h2>Contact Me</h2>
 
-        <p>Email: bravinmulati@gmail.com</p>
-
-        <!-- Contact Form -->
         <form id="contactForm">
             <input type="text" id="name" placeholder="Your Name" required>
-            <br><br>
 
             <textarea id="message" placeholder="Your Message" required></textarea>
-            <br><br>
 
             <button type="submit">Send Message</button>
         </form>
 
-        <!-- Social Links -->
-        <div class="social-links">
-            <a href="https://wa.me/254790367352" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-
-            <a href="https://instagram.com/Braavos12.3" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
+        <p id="status"></p>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
         <p>© 2026 Bravin Mulati. All rights reserved.</p>
     </footer>
 
-    <!-- Backend Connection Script -->
+    <!-- JAVASCRIPT -->
     <script>
-        document.getElementById("contactForm").addEventListener("submit", async (e) => {
+        const form = document.getElementById("contactForm");
+        const statusText = document.getElementById("status");
+
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
 
             const name = document.getElementById("name").value;
             const message = document.getElementById("message").value;
 
             try {
-                const res = await fetch("http://localhost:3000/contact", {
+                const res = await fetch("http://127.0.0.1:3000/contact", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -93,11 +86,13 @@
                     body: JSON.stringify({ name, message })
                 });
 
-                alert(await res.text());
-                document.getElementById("contactForm").reset();
+                const text = await res.text();
+                statusText.innerText = text;
+
+                form.reset();
 
             } catch (err) {
-                alert("Backend not running or connection failed");
+                statusText.innerText = "❌ Server not running or connection failed";
             }
         });
     </script>
