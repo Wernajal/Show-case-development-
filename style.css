@@ -1,78 +1,79 @@
-
-/* Reset default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f0f0f0;
-    color: #333;
-    text-align: center;
-    padding: 20px;
-}
-
-header {
-    background-color: #4CAF50;
+    background: #0f172a;
     color: white;
-    padding: 30px 0;
-    margin-bottom: 20px;
+    text-align: center;
 }
 
-h1 {
-    font-size: 2.5rem;
+/* HERO */
+.hero {
+    padding: 60px 20px;
+    background: #111827;
 }
 
-h2 {
-    margin-top: 20px;
-    color: #4CAF50;
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #38bdf8;
 }
 
-ul {
-    list-style: none;
+.socials a {
+    color: white;
+    font-size: 24px;
+    margin: 10px;
 }
 
-a {
-    color: #4CAF50;
-    text-decoration: none;
+/* SECTIONS */
+.section {
+    padding: 50px 20px;
 }
 
-a:hover {
-    text-decoration: underline;
+.projects {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-section {
-    margin-bottom: 30px;
+.card {
+    background: #1e293b;
     padding: 20px;
-    background-color: white;
     border-radius: 10px;
+    width: 150px;
+}
+
+/* FORM */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 250px;
+    margin: auto;
+}
+
+input, textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background: #38bdf8;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #0ea5e9;
 }
 
 footer {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #555;
+    padding: 20px;
+    background: #111827;
 }
-.social-links {
-  margin-top: 15px;
-}
-
-.social-links a {
-  font-size: 30px;
-  margin-right: 15px;
-  color: #333;
-  text-decoration: none;
-}
-
-.social-links a:hover {
-  color: #25D366; /* WhatsApp green */
-}
-<!-- Profile Section -->
-<div class="profile-container">
-  <img src="profile/image.jpg" alt="My Photo" class="profile-img">
-  <h2>Bravo Wyatt</h2>
-  <p>Welcome to my portfolio!</p>
-</div>
