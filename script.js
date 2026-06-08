@@ -1,9 +1,19 @@
-console.log("Welcome to Bravin Mulati's Portfolio!");
-alert("Hello! Thanks for visiting my website.");
-fetch("http://127.0.0.1:3000/contact", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ name, message })
-})
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+app.post("/contact", (req, res) => {
+    const { name, message } = req.body;
+
+    console.log("New message:", name, message);
+
+    res.send("✅ Message received successfully!");
+});
+
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
+});
