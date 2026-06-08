@@ -1,29 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bravin Mulati | Portfolio</title>
+
     <link rel="stylesheet" href="style.css">
-    <!-- Profile Section -->
-<div class="profile-container">
-  <img src="profile/image.jpg" alt="My Photo" class="profile-img">
-  <h2>Bravim Wanjala</h2>
-  <p>Welcome to my portfolio!</p>
-</div>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
+
+    <!-- Profile Section -->
+    <div class="profile-container">
+        <img src="profile/image.jpg" alt="My Photo" class="profile-img">
+        <h2>Bravim Wanjala</h2>
+        <p>Welcome to my portfolio!</p>
+    </div>
+
+    <!-- Header -->
     <header>
         <h1>Hi, I'm Bravin Mulati</h1>
         <p>Web Developer & Digital Creator</p>
-    
+    </header>
+
+    <!-- About Section -->
     <section id="about">
         <h2>About Me</h2>
         <p>I am a passionate web developer creating modern and responsive websites. I love coding and building digital platforms.</p>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects">
         <h2>My Projects</h2>
         <ul>
@@ -33,26 +42,65 @@
         </ul>
     </section>
 
+    <!-- Contact Section (FULL STACK READY) -->
     <section id="contact">
         <h2>Contact Me</h2>
-        <p>Email: bravinmulati@gmail.com</p>
-        
-        <div class="social-links">
-  <a href="https://wa.me/254790367352" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
 
-  <a href="https://instagram.com/Braavos12.3" target="_blank">
-    <i class="fab fa-instagram"></i>
-  </a>
+        <p>Email: bravinmulati@gmail.com</p>
+
+        <!-- Contact Form -->
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <br><br>
+
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <br><br>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://wa.me/254790367352" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+
+            <a href="https://instagram.com/Braavos12.3" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>© 2026 Bravin Mulati. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Backend Connection Script -->
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const message = document.getElementById("message").value;
+
+            try {
+                const res = await fetch("http://localhost:3000/contact", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ name, message })
+                });
+
+                alert(await res.text());
+                document.getElementById("contactForm").reset();
+
+            } catch (err) {
+                alert("Backend not running or connection failed");
+            }
+        });
+    </script>
+
 </body>
 </html>
-<link rel="stylesheet" href="css/style.css">
